@@ -75,7 +75,15 @@ class Usuario
    */
   getBookNames ()
   {
-    return this.libros.map( b => b.nombre );
+    try {
+      if ( this.libros.length ) {
+        return this.libros.map( b => b.nombre );
+      } else {
+        return 'No hay libros';
+      }
+    } catch ( e ) {
+      return [];
+    }
   }
 
 
@@ -95,7 +103,6 @@ usuario.addMascota( 'Caballo' )
 */
 usuario.addBook( 'El señor de los anillos', 'J.R.R. Tolkien' )
 usuario.addBook( 'JavaScript: The Good Parts', 'Douglas Crockford' )
-
 
 const fullName = usuario.getFullName()
 const booksNames = usuario.getBookNames()
